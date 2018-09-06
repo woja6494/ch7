@@ -1,0 +1,58 @@
+abstract  class Media
+{
+    protected String title;
+    public String getTitle() {return  title;}
+}
+
+class Book extends  Media
+{
+    private String author;
+    public Book(String title, String author)
+    {
+        this.title = title;
+        this. author = author;
+    }
+    public String getAuthor() {return  author;}
+    public String toString()
+    {
+        return getTitle() + "by " + getAuthor();
+    }
+}
+
+class DVD extends Media
+{
+    private int year;
+    public DVD(String title, int year)
+    {
+        this.title = title;
+        this.year = year;
+    }
+    public int getYear() {return year;}
+    public String toString()
+    {
+        return year + ": " + title + "[DVD]";
+    }
+}
+
+import java.util.*;
+public class Driver
+{
+    public static void main(String[] args)
+    {
+        ArrayList<Media> library = new ArrayList<Media>();
+        library.add(new Book("Dare to go Solo", "Elizabeth Boese"));
+        library.add(new DVD("Dare to go Solo", 2006));
+        library.add(new DVD("Dare to go Solo", 1999));
+        library.add(new Book("Intro to Programming with Hava Applets", "Elizabeth Boese"));
+        library.add(new DVD("Intro to Programming",2011));
+        library.add(new DVD("Intro to Programming",1970));
+        library.add(new DVD("Dare to go Solo", 2012));
+        library.add(new DVD("Dare to go Solo", 2000));
+        library.add(new Book("Dare to go Solo", "Wise Travelguy"));
+        library.add(new Book("Intro to Programming with Hava Applets", "Elizabeth Boe"));
+        Collections.sort(library);
+        for (Object media : library)
+            System.out.println(media);
+
+    }
+}
