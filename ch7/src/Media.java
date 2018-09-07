@@ -5,7 +5,6 @@ abstract class Media implements Comparable<Media>
 
 
     public int compareTo(Media m) {
-
         if (m instanceof Book && this instanceof DVD) {
             return -1;
         }
