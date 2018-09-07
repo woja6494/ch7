@@ -6,21 +6,28 @@ abstract class Media implements Comparable<Media>
 
     public int compareTo(Media m) {
 
-
-        if (m instanceof Book&& this instanceof Book){
-            return ((Book) this).getTitle().compareTo(((Book) m).getTitle());
+        if (m instanceof Book && this instanceof DVD) {
+            return -1;
         }
-        else if(m instanceof DVD && this instanceof DVD){
-            return Integer.compare(((DVD) this).getYear(), ((DVD) m).getYear());
+        if (m instanceof DVD && this instanceof DVD) {
+            if (((DVD) this).getTitle() != (((DVD) m).getTitle()) ) {
+
+                return this.getTitle().compareTo(m.getTitle());
+            } else {
+
+                return ((DVD) this).getYear() - ((DVD) m).getYear();
+            }
         }
+        if (m instanceof Book && this instanceof Book) {
+            if (this.getTitle() != (m.getTitle())) {
 
-        System.out.println( "this title" + this.getClass());
-        System.out.println( "this title" + this.getTitle());
+                return this.getTitle().compareTo(m.getTitle());
+            } else {
+                return ((Book) this).getAuthor().compareTo(((Book) m).getAuthor());
+            }
+        }
+        return 0;
 
-        System.out.println("m title" + m.getClass());
-
-        return this.getTitle().compareTo(m.getTitle());
     }
-
 }
 
